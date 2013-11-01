@@ -5,6 +5,7 @@ import "net"
 import "net/http"
 import "fmt"
 import "io/ioutil"
+import "strings"
 
 type Config struct {
   Listen string
@@ -43,6 +44,15 @@ func proxyHandler(
     for header, value := range req.Header {
       request.Header.Set(header, value[0])
     }
+
+    source := strings.Split(req.RemoteAddr, ":")[0]
+    forwardedFor := request.Header.Get("X-Forwarded-For")
+    if forwardedFor != "" {
+      forwardedFor = forwardedFor + ", " + source
+    } else {
+      forwardedFor = source
+    }
+    request.Header.Set("X-Forwarded-For", forwardedFor)
 
     // Append headers
     if appendHeaders != nil {

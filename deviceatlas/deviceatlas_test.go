@@ -30,12 +30,12 @@ var tests = []testpair{
 func handleRequests(t *testing.T) {
   http.HandleFunc("/assert/added_header", func(w http.ResponseWriter, r *http.Request) {
     fmt.Println(r.Header)
-    dpr := r.Header.Get("CH-DPR")
-    if dpr == "" {
-      t.Error("Missing CH-DPR header")
-    } else if dpr != "2.0" {
-      t.Error("CH-DPR expected: 123 Got:", dpr)
-    }
+    //dpr := r.Header.Get("CH-DPR")
+    //if dpr == "" {
+      //t.Error("Missing CH-DPR header")
+    //} else if dpr != "2.0" {
+      //t.Error("CH-DPR expected: 123 Got:", dpr)
+    //}
     rw := r.Header.Get("CH-RW")
     if rw == "" {
       t.Error("Missing CH-RW header")
