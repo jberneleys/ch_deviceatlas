@@ -102,7 +102,7 @@ go install github.com/ernesto-jimenez/ch_deviceatlas
 Running the server:
 
 ```bash
-PROXY_TO=[(host|ip):port] PORT=[proxy port] DEVICEATLAS_KEY=[key] ch_deviceatlas
+ch_deviceatlas --listen=[proxy port] --deviceatlas_key=[key] --proxy_to=[(host|ip):port]
 ```
 
 ## Deploying in heroku
